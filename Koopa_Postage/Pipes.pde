@@ -6,6 +6,7 @@ class Pipes{
   int h;
   
   int left;
+  int right;
   int top;
   int bottom;
   
@@ -18,13 +19,19 @@ class Pipes{
     h = sH;
     
     left = x - w/2;
+    right = x + w/2;
     top = y - h/2;
     bottom = y + h/2;
     
   }
   void topRow(){
     rectMode(CENTER);
-    rect(x, 0, w, height*2 - h - 400);
+    rect(x, 0, w, height*2 - h - 600);
+    
+    left = x - w/2;
+    right = x + w/2;
+    top = 0 + ((height*2 - h- 600)/2);
+    bottom = 0 + ((height*2 - h- 600)/2);
   }
   void render(){
     rectMode(CENTER);
@@ -70,6 +77,11 @@ class Pipes{
         p29.x = p29.x - 5;
         p30.x = p30.x - 5;
       }
+    }
+  }
+  void crash(Player P1){
+    if(P1.right >= left && P1.bottom >= top && P1.left <= right){
+      state = 5;
     }
   }
   

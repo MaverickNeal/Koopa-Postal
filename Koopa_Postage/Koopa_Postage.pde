@@ -90,8 +90,8 @@ void draw(){
     image(level1Img, width/2, height/2);
     P1.render();P1.fly();P1.fall();P1.maxFlapLift();
   
-    p1.render();p1.move();p1.topRow();
-    p2.render();p2.move();p2.topRow();
+    p1.render();p1.move();p1.topRow();p1.crash(P1);
+    p2.render();p2.move();p2.topRow();p2.crash(P1);
     p3.render();p3.move();p3.topRow();
     p4.render();p4.move();p4.topRow();
     p5.render();p5.move();p5.topRow();
@@ -101,37 +101,37 @@ void draw(){
     image(level2Img, width/2, height/2);
     P1.render();P1.fly();P1.fall();P1.maxFlapLift();
     
-    p6.render();p6.move();p6.topRow();
-    p7.render();p7.move();p7.topRow();
-    p8.render();p8.move();p8.topRow();
-    p9.render();p9.move();p9.topRow();
-    p10.render();p10.move();p10.topRow();
-    p11.render();p11.move();p11.topRow();
-    p12.render();p12.move();p12.topRow();
-    p13.render();p13.move();p13.topRow();
-    p14.render();p14.move();p14.topRow();
-    p15.render();p15.move();p15.topRow();
+    p6.render();p6.move();p6.topRow();p6.crash(P1);
+    p7.render();p7.move();p7.topRow();p7.crash(P1);
+    p8.render();p8.move();p8.topRow();p8.crash(P1);
+    p9.render();p9.move();p9.topRow();p9.crash(P1);
+    p10.render();p10.move();p10.topRow();p10.crash(P1);
+    p11.render();p11.move();p11.topRow();p11.crash(P1);
+    p12.render();p12.move();p12.topRow();p12.crash(P1);
+    p13.render();p13.move();p13.topRow();p13.crash(P1);
+    p14.render();p14.move();p14.topRow();p14.crash(P1);
+    p15.render();p15.move();p15.topRow();p15.crash(P1);
     change();
     break;
     case 3:
     image(level3Img, width/2, height/2);
     P1.render();P1.fly();P1.fall();P1.maxFlapLift();
     
-    p16.render();p16.move();p16.topRow();
-    p17.render();p17.move();p17.topRow();
-    p18.render();p18.move();p18.topRow();
-    p19.render();p19.move();p19.topRow();
-    p20.render();p20.move();p20.topRow();
-    p21.render();p21.move();p21.topRow();
-    p22.render();p22.move();p22.topRow();
-    p23.render();p23.move();p23.topRow();
-    p24.render();p24.move();p24.topRow();
-    p25.render();p25.move();p25.topRow();
-    p26.render();p26.move();p26.topRow();
-    p27.render();p27.move();p27.topRow();
-    p28.render();p28.move();p28.topRow();
-    p29.render();p29.move();p29.topRow();
-    p30.render();p30.move();p30.topRow();
+    p16.render();p16.move();p16.topRow();p16.crash(P1);
+    p17.render();p17.move();p17.topRow();p17.crash(P1);
+    p18.render();p18.move();p18.topRow();p18.crash(P1);
+    p19.render();p19.move();p19.topRow();p19.crash(P1);
+    p20.render();p20.move();p20.topRow();p20.crash(P1);
+    p21.render();p21.move();p21.topRow();p21.crash(P1);
+    p22.render();p22.move();p22.topRow();p22.crash(P1);
+    p23.render();p23.move();p23.topRow();p23.crash(P1);
+    p24.render();p24.move();p24.topRow();p24.crash(P1);
+    p25.render();p25.move();p25.topRow();p25.crash(P1);
+    p26.render();p26.move();p26.topRow();p26.crash(P1);
+    p27.render();p27.move();p27.topRow();p27.crash(P1);
+    p28.render();p28.move();p28.topRow();p28.crash(P1);
+    p29.render();p29.move();p29.topRow();p29.crash(P1);
+    p30.render();p30.move();p30.topRow();p30.crash(P1);
     change();
     break;
     case 4:
@@ -157,7 +157,7 @@ void startscreen(){
 void crashscreen(){
   textSize(100);
   fill(255);
-  text("OUCH!", 450, height/2);
+  text("OUCH!", 600, height/2);
 }
 void winscreen(){
   textSize(200);
@@ -177,6 +177,12 @@ void keyPressed(){
     flap.play();
     P1.maxFlapLift = P1.y - P1.flapHeight;
     P1.isFalling = false;
+  }
+  if(key == 'r'){
+    state = 1;
+    startTime = 0;
+    currentTime = 0;
+    P1.y = height/2;
   }
 }
 void keyReleased(){
